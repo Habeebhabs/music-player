@@ -1,0 +1,234 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    color: #fff;
+    background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+    padding: 0.7rem 1rem;  
+    font-family: 'josefin sans','monospace'; 
+}
+.sound,input,.far,.fas{
+    cursor: pointer;
+}
+.far{
+    font-size: 1.2rem;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0.6rem;
+}
+.volume{
+    display: flex;
+    align-items: center;
+}
+.sound{
+    width: 20px;
+}
+.right{
+    display: flex;
+    align-items: center;
+}
+.beat{
+    display: flex;
+    align-items: flex-end;
+    margin-left: 1rem;
+}
+.beat > span{
+    width: 1.8px;
+    height: 9px;
+    background: #fff;
+    margin-left: 5px;
+    border-radius: 2px 2px 0 0;
+    /* animation: beat 0.5s linear infinite; */
+}
+.beat >span:nth-child(2){
+    animation-duration: 0.6s;
+    height: 14px;
+}
+.beat >span:nth-child(3){
+    animation-duration: 0.7s;
+    height: 12px;
+}
+.beat >span:nth-child(4){
+    animation-duration: 0.8s;
+    height: 14px;
+}
+.beat >span:nth-child(5){
+    animation-duration: 0.9s;
+}
+
+@keyframes beat {
+    0%{
+        height: 3px;
+    }
+    100%{
+        height: 18px;
+    }
+}
+
+input{
+    margin-left: 0.6rem;
+    width: 120px;
+    -webkit-appearance: none;
+}
+.range-volume{
+    display: none;
+    animation: expand 0.5s ease-in-out forwards;
+}
+@keyframes expand {
+    0%{
+        width: 30px;
+    }
+    100%{
+        width: 120px;
+    }
+}
+input::-webkit-slider-thumb{
+   -webkit-appearance: none;
+   width: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background-color: #fff;
+   margin-top: -4px;
+}
+input::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  background: rgba(255,255,255,0.7);
+  height: 3px;
+}
+.img-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+.img-container > img{
+    width: 70vw;
+    height: 19rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #fff;
+}
+.detail{
+    text-align: center;
+    margin-top: 2rem;
+    text-transform: capitalize;
+}
+.name{
+    font-weight: 400;
+    font-size: 2rem;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.artist{
+    font-size: 1.1rem;
+    opacity: 0.8;
+    font-weight: 300;
+}
+.controls{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+    margin-top: 1.5rem;
+}
+.top{
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.track{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    width: inherit;
+}
+.range-track{
+    width: inherit;
+    margin-left: 0;
+}
+.range-track::-webkit-slider-thumb{
+   width: 17px;
+   height: 17px;
+   margin-top: -8px;
+}
+.time{
+    margin-top: 0.5rem;
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 300;
+    font-family: monospace;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+.bottom{
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    width: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.bottom .fa-play-circle,.fa-pause{
+    font-size: 2.3rem;
+}
+
+.pop{
+    animation: heart 0.2s ease-in-out;
+}
+@keyframes heart {
+    to{
+        transform: scale(2);
+    }
+}
+.show{
+    display: block;
+}
+
+.expanding{
+    animation: expandTwo 0.5s ease-in-out forwards;
+}
+@keyframes expandTwo {
+    to{
+        width: 0;
+    }
+}
+
+.like{
+    font-weight: 700 !important;
+    color: rgb(223, 65, 65);
+    animation: pop 0.3s ease-in-out;
+}
+.like-two{
+    animation: popTwo 0.3s ease-in-out;
+}
+@keyframes popTwo {
+    50%{
+        transform: scale(2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes pop {
+    50%{
+        transform: scale(2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.anim{
+    animation: beat 0.5s linear infinite;
+}
