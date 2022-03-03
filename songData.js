@@ -1,6 +1,6 @@
 export const songData = [
     {
-        url: './songs/Babalos - Snow crystal 185 bpm.mp3',
+        url: './songs/Sia_-_Cheap_Thrills_(_Lyrics_).m4a',
         name: 'bablos',
         artist: 'snow crystal',
         img: './images/girls like you.jpg',
