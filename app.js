@@ -110,6 +110,7 @@ repeatBtn.addEventListener('click', () => {
 
 
 playBtn.addEventListener('click', () => {
+    clearInterval(interval)
     audio.play();
     playBtn.style.display = 'none';
     pauseBtn.style.display = 'block';
@@ -127,13 +128,13 @@ playBtn.addEventListener('click', () => {
 
 
 pauseBtn.addEventListener('click', () => {
+    clearInterval(interval);
     audio.pause();
     pauseBtn.style.display = 'none';
     playBtn.style.display = 'block';
     beatAnimation.forEach((item) => {
         item.style.animationPlayState = 'paused';
     })
-    clearInterval(interval);
 })
 
 
@@ -191,4 +192,17 @@ likeBtn.addEventListener('click', () => {
 songSlider.addEventListener('input', () => {
     audio.currentTime = songSlider.value;
     count = songSlider.value;
+})
+
+
+audio.addEventListener('ended', () => {
+    count = 0;
+    songSlider.value = 0;
+    clearInterval(interval);
+    currentSongTime.textContent = '00:00';
+    beatAnimation.forEach((item) => {
+        item.style.animationPlayState = 'paused';
+    })
+    pauseBtn.style.display = 'none';
+    playBtn.style.display = 'block';
 })
