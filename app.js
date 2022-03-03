@@ -200,6 +200,7 @@ audio.addEventListener('ended', () => {
     })
     pauseBtn.style.display = 'none';
     playBtn.style.display = 'block';
+    document.querySelector('.loader').style.display = 'none';
 })
 
 
