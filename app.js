@@ -110,7 +110,7 @@ repeatBtn.addEventListener('click', () => {
 
 
 playBtn.addEventListener('click', () => {
-    clearInterval(interval)
+//     clearInterval(interval)
     audio.play();
     playBtn.style.display = 'none';
     pauseBtn.style.display = 'block';
@@ -122,7 +122,7 @@ playBtn.addEventListener('click', () => {
             item.classList.add('anim');
         }
     })
-    interval = setInterval(sliding,1000);
+//     interval = setInterval(sliding,1000);
     // if(audio.readyState === 4){
     //         document.querySelector('.loader').style.display = 'block';
     // }
@@ -148,7 +148,7 @@ next.addEventListener('click', () => {
     mediaSource(songIndex);
     audio.play();
     checkBtns();
-    interval = setInterval(sliding,1000);
+//     interval = setInterval(sliding,1000);
 })
 
 
@@ -173,7 +173,7 @@ previous.addEventListener('click', () => {
     mediaSource(songIndex);
     audio.play();
     checkBtns();
-    interval = setInterval(sliding,1000);
+//     interval = setInterval(sliding,1000);
 })
 
 
