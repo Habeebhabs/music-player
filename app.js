@@ -110,20 +110,21 @@ repeatBtn.addEventListener('click', () => {
 
 
 playBtn.addEventListener('click', () => {
-    clearInterval(interval)
-    audio.play();
-    playBtn.style.display = 'none';
-    pauseBtn.style.display = 'block';
-    beatAnimation.forEach((item) => {
-        if(item.classList.contains('anim')){
-            item.style.animationPlayState = 'running';
-        }
-        else{
-            item.classList.add('anim');
-        }
-    })
+//     clearInterval(interval)
+//     audio.play();
+//     playBtn.style.display = 'none';
+//     pauseBtn.style.display = 'block';
+//     beatAnimation.forEach((item) => {
+//         if(item.classList.contains('anim')){
+//             item.style.animationPlayState = 'running';
+//         }
+//         else{
+//             item.classList.add('anim');
+//         }
+//     })
 
-    interval = setInterval(sliding,1000);
+//     interval = setInterval(sliding,1000);
+    console.log(audio.readyState)
 })
 
 
