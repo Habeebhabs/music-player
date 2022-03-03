@@ -42,15 +42,17 @@ const mediaSource = (index) => {
     }
 }
 
+
 const convertToMinute = (value) => {
     const sec = parseInt(value, 10);
     let hours   = Math.floor(sec / 3600);
     let minutes = Math.floor((sec - (hours * 3600)) / 60);
     let seconds = sec - (hours * 3600) - (minutes * 60);
-    if (minutes < 10) minutes = "0"+minutes;
-    if (seconds < 10) seconds = "0"+seconds;
+    if (minutes < 10) minutes = '0' + minutes;
+    if (seconds < 10) seconds = '0' + seconds;
     return minutes + ':' + seconds;
 }
+
 
 audio.onloadedmetadata = () => {
     musicTime = audio.duration;
@@ -59,12 +61,14 @@ audio.onloadedmetadata = () => {
     songSlider.value = audio.currentTime;
     count = 0;
 }
+
 mediaSource(songIndex);
 
 volumeBtn.addEventListener('click', () => {
     if(!volumeSlider.classList.contains('show')){
         volumeSlider.classList.add('show')
-    }else{
+    }
+    else{
         volumeSlider.classList.remove('show')
     }
 })
@@ -73,7 +77,8 @@ const checkMusicVolume = () => {
     audio.volume = volumeSlider.value / 10;
     if(audio.volume === 0){
         volumeBtn.classList.replace(volumeBtn.classList[1],'fa-volume-mute');
-    }else if(audio.volume < 0.4){
+    }
+    else if(audio.volume < 0.4){
         volumeBtn.classList.replace(volumeBtn.classList[1],'fa-volume-down');
     }
     else if(audio.volume < 0.8){
@@ -96,11 +101,13 @@ volumeSlider.addEventListener("mouseleave", () => {
     }, 500);
 })
 
+
 repeatBtn.addEventListener('click', () => {
     audio.load();
     audio.play();
     checkBtns();
 })
+
 
 playBtn.addEventListener('click', () => {
     audio.play();
@@ -116,8 +123,8 @@ playBtn.addEventListener('click', () => {
     })
 
     interval = setInterval(sliding,1000);
-    if(count > musicTime) clearInterval(interval);
 })
+
 
 pauseBtn.addEventListener('click', () => {
     audio.pause();
@@ -126,8 +133,9 @@ pauseBtn.addEventListener('click', () => {
     beatAnimation.forEach((item) => {
         item.style.animationPlayState = 'paused';
     })
-    clearInterval(interval)
+    clearInterval(interval);
 })
+
 
 next.addEventListener('click', () => {
     songIndex++;
@@ -140,6 +148,7 @@ next.addEventListener('click', () => {
     interval = setInterval(sliding,1000);
 })
 
+
 const checkBtns = () => {
     if(playBtn.style.display = 'block'){
         playBtn.style.display = 'none';
@@ -147,11 +156,11 @@ const checkBtns = () => {
     }
 }
 
+
 previous.addEventListener('click', () => {
     if(audio.currentTime > musicTime / 2){
         audio.load();
         audio.play();
-        audio.loop
         return
     }
     songIndex--;
@@ -161,6 +170,7 @@ previous.addEventListener('click', () => {
     mediaSource(songIndex);
     audio.play();
     checkBtns();
+    interval = setInterval(sliding,1000);
 })
 
 
