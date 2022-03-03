@@ -124,7 +124,9 @@ playBtn.addEventListener('click', () => {
 //     })
 
 //     interval = setInterval(sliding,1000);
-    console.log(audio.readyState)
+    if(audio.readyState !== 4){
+            document.querySelector('.loader').style.display = 'block';
+    }
 })
 
 
