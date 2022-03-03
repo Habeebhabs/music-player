@@ -110,23 +110,22 @@ repeatBtn.addEventListener('click', () => {
 
 
 playBtn.addEventListener('click', () => {
-//     clearInterval(interval)
-//     audio.play();
-//     playBtn.style.display = 'none';
-//     pauseBtn.style.display = 'block';
-//     beatAnimation.forEach((item) => {
-//         if(item.classList.contains('anim')){
-//             item.style.animationPlayState = 'running';
-//         }
-//         else{
-//             item.classList.add('anim');
-//         }
-//     })
-
-//     interval = setInterval(sliding,1000);
-    if(audio.readyState !== 4){
-            document.querySelector('.loader').style.display = 'block';
-    }
+    clearInterval(interval)
+    audio.play();
+    playBtn.style.display = 'none';
+    pauseBtn.style.display = 'block';
+    beatAnimation.forEach((item) => {
+        if(item.classList.contains('anim')){
+            item.style.animationPlayState = 'running';
+        }
+        else{
+            item.classList.add('anim');
+        }
+    })
+    interval = setInterval(sliding,1000);
+    // if(audio.readyState === 4){
+    //         document.querySelector('.loader').style.display = 'block';
+    // }
 })
 
 
@@ -210,6 +209,7 @@ audio.addEventListener('ended', () => {
     playBtn.style.display = 'block';
 })
 
-audio.oncanplay = () => {
-    document.querySelector('.loader').style.display = 'none';
+
+audio.onwaiting = () => {
+    console.log('ok');
 }
