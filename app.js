@@ -211,5 +211,10 @@ audio.addEventListener('ended', () => {
 
 
 audio.onwaiting = () => {
+    document.querySelector('.loader').style.display = 'block';
     console.log('ok');
 }
+audio.onplaying = () => {
+    document.querySelector('.loader').style.display = 'none';
+}
+    
