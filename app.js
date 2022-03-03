@@ -211,10 +211,12 @@ audio.addEventListener('ended', () => {
 
 
 audio.onwaiting = () => {
+    clearInterval(interval);
     document.querySelector('.loader').style.display = 'block';
     console.log('ok');
 }
 audio.onplaying = () => {
+    interval = setInterval(sliding,1000);
     document.querySelector('.loader').style.display = 'none';
 }
     
