@@ -211,6 +211,7 @@ audio.addEventListener('ended', () => {
 
 
 audio.onwaiting = () => {
+    pauseBtn.style.display = 'none';
     clearInterval(interval);
     document.querySelector('.loader').style.display = 'block';
     console.log('ok');
@@ -218,5 +219,6 @@ audio.onwaiting = () => {
 audio.onplaying = () => {
     interval = setInterval(sliding,1000);
     document.querySelector('.loader').style.display = 'none';
+    pauseBtn.style.display = 'block';
 }
     
