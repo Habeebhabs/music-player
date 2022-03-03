@@ -209,3 +209,7 @@ audio.addEventListener('ended', () => {
     pauseBtn.style.display = 'none';
     playBtn.style.display = 'block';
 })
+
+audio.oncanplay = () => {
+    document.querySelector('.loader').style.display = 'none';
+}
