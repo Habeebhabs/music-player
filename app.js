@@ -110,7 +110,6 @@ repeatBtn.addEventListener('click', () => {
 
 
 playBtn.addEventListener('click', () => {
-//     clearInterval(interval)
     audio.play();
     playBtn.style.display = 'none';
     pauseBtn.style.display = 'block';
@@ -122,10 +121,6 @@ playBtn.addEventListener('click', () => {
             item.classList.add('anim');
         }
     })
-//     interval = setInterval(sliding,1000);
-    // if(audio.readyState === 4){
-    //         document.querySelector('.loader').style.display = 'block';
-    // }
 })
 
 
@@ -148,7 +143,6 @@ next.addEventListener('click', () => {
     mediaSource(songIndex);
     audio.play();
     checkBtns();
-//     interval = setInterval(sliding,1000);
 })
 
 
@@ -173,7 +167,6 @@ previous.addEventListener('click', () => {
     mediaSource(songIndex);
     audio.play();
     checkBtns();
-//     interval = setInterval(sliding,1000);
 })
 
 
@@ -214,11 +207,16 @@ audio.onwaiting = () => {
     pauseBtn.style.display = 'none';
     clearInterval(interval);
     document.querySelector('.loader').style.display = 'block';
-    console.log('ok');
+    beatAnimation.forEach((item) => {
+        item.style.animationPlayState = 'paused';
+    })
 }
 audio.onplaying = () => {
     interval = setInterval(sliding,1000);
     document.querySelector('.loader').style.display = 'none';
     pauseBtn.style.display = 'block';
+    beatAnimation.forEach((item) => {
+        item.style.animationPlayState = 'running';
+    })
 }
     
