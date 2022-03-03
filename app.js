@@ -115,7 +115,7 @@ playBtn.addEventListener('click', () => {
         }
     })
 
-    interval = setInterval(sliding,1000)
+    interval = setInterval(sliding,1000);
     if(count > musicTime) clearInterval(interval);
 })
 
@@ -137,6 +137,7 @@ next.addEventListener('click', () => {
     mediaSource(songIndex);
     audio.play();
     checkBtns();
+    interval = setInterval(sliding,1000);
 })
 
 const checkBtns = () => {
