@@ -4,7 +4,7 @@ export const songData = [
         name: 'bablos',
         artist: 'snow crystal',
         img: './images/girls like you.jpg',
-        isLiked: true
+        isLiked: false
     },
     {
         url: './songs/Coldplay_-_Hymn_For_The_Weekend_(Official_Video).mp3',
