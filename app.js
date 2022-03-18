@@ -29,6 +29,22 @@ const sliding = () => {
 }
 
 
+const setLikes = () => {
+    songData.forEach((item) => {
+        if(localStorage.getItem(item.name) !== null){
+            item.isLiked = JSON.parse(localStorage.getItem(item.name));
+        }
+    })
+}
+setLikes()
+
+
+const setBeats = (state) => {
+    beatAnimation.forEach((item) => {
+        item.style.animationPlayState = state;
+    })
+}
+
 const mediaSource = (index) => {
     audio.src = songData[index].url;
     songImage.src = songData[index].img;
@@ -42,25 +58,24 @@ const mediaSource = (index) => {
     }
 }
 
-
 const convertToMinute = (value) => {
     const sec = parseInt(value, 10);
     let hours   = Math.floor(sec / 3600);
     let minutes = Math.floor((sec - (hours * 3600)) / 60);
     let seconds = sec - (hours * 3600) - (minutes * 60);
-    if (minutes < 10) minutes = '0' + minutes;
-    if (seconds < 10) seconds = '0' + seconds;
+    if(minutes < 10) minutes = '0' + minutes;
+    if(seconds < 10) seconds = '0' + seconds;
     return minutes + ':' + seconds;
 }
 
 
-audio.onloadedmetadata = () => {
+audio.addEventListener('loadedmetadata', () => {
     musicTime = audio.duration;
     fullSongTime.textContent = convertToMinute(musicTime);
     songSlider.max = musicTime;
     songSlider.value = audio.currentTime;
     count = 0;
-}
+})
 
 mediaSource(songIndex);
 
@@ -129,9 +144,7 @@ pauseBtn.addEventListener('click', () => {
     audio.pause();
     pauseBtn.style.display = 'none';
     playBtn.style.display = 'block';
-    beatAnimation.forEach((item) => {
-        item.style.animationPlayState = 'paused';
-    })
+    setBeats('paused');
 })
 
 
@@ -170,6 +183,7 @@ previous.addEventListener('click', () => {
 })
 
 
+
 likeBtn.addEventListener('click', () => {
     if(likeBtn.classList.contains('like')){
         likeBtn.classList.remove('like');
@@ -181,6 +195,7 @@ likeBtn.addEventListener('click', () => {
         likeBtn.classList.add('like');
         songData[songIndex].isLiked = true;
     }
+    localStorage.setItem(songData[songIndex].name,songData[songIndex].isLiked)
 });
 
 
@@ -195,29 +210,23 @@ audio.addEventListener('ended', () => {
     songSlider.value = 0;
     clearInterval(interval);
     currentSongTime.textContent = '00:00';
-    beatAnimation.forEach((item) => {
-        item.style.animationPlayState = 'paused';
-    })
+    setBeats('paused');
     pauseBtn.style.display = 'none';
     playBtn.style.display = 'block';
     document.querySelector('.loader').style.display = 'none';
 })
 
 
-audio.onwaiting = () => {
+audio.addEventListener('waiting', () => {
     pauseBtn.style.display = 'none';
     clearInterval(interval);
     document.querySelector('.loader').style.display = 'block';
-    beatAnimation.forEach((item) => {
-        item.style.animationPlayState = 'paused';
-    })
-}
-audio.onplaying = () => {
+    setBeats('paused');
+})
+
+audio.addEventListener('playing', () => {
     interval = setInterval(sliding,1000);
     document.querySelector('.loader').style.display = 'none';
     pauseBtn.style.display = 'block';
-    beatAnimation.forEach((item) => {
-        item.style.animationPlayState = 'running';
-    })
-}
-    
+    setBeats('running');
+})
