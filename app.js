@@ -31,8 +31,8 @@ const sliding = () => {
 
 const setLikes = () => {
     songData.forEach((item) => {
-        if(sessionStorage.getItem(item.name) !== null){
-            item.isLiked = JSON.parse(sessionStorage.getItem(item.name));
+        if(localStorage.getItem(item.name) !== null){
+            item.isLiked = JSON.parse(localStorage.getItem(item.name));
         }
     })
 }
@@ -195,7 +195,7 @@ likeBtn.addEventListener('click', () => {
         likeBtn.classList.add('like');
         songData[songIndex].isLiked = true;
     }
-    sessionStorage.setItem(songData[songIndex].name,songData[songIndex].isLiked)
+    localStorage.setItem(songData[songIndex].name,songData[songIndex].isLiked)
 });
 
 
